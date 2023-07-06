@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:n8_default_project/ui/home/home_screen.dart';
+import 'package:n8_default_project/ui/home/currencies_screen_1.dart';
+import 'package:n8_default_project/ui/home/currencies_screen_2.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: HomeScreen(),
+      home: CurrenciesScreen2(),
     );
   }
 }
