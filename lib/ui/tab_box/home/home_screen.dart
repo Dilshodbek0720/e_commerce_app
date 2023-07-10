@@ -15,6 +15,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final CommercialRepository commercialRepository =
       CommercialRepository(apiProvider: ApiProvider());
+  
   List<String> categories = [];
   List<ProductModel> products = [];
   int categoryId = 0;
