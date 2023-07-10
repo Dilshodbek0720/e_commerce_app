@@ -20,6 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
   List<ProductModel> products = [];
   int categoryId = 0;
   bool isLoading = false;
+  
   _fetchData() async {
     setState(() {
       isLoading = true;
