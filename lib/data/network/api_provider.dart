@@ -19,7 +19,6 @@ class ApiProvider {
       }
       return UniversalResponse(error: "ERROR");
     }catch(error){
-      print("ERRROR$error");
       return UniversalResponse(error: error.toString());
     }
   }
@@ -39,7 +38,6 @@ class ApiProvider {
       }
       return UniversalResponse(error: "ERROR");
     } catch (error) {
-      print("ERRROR$error");
       return UniversalResponse(error: error.toString());
     }
   }
@@ -59,7 +57,6 @@ class ApiProvider {
       }
       return UniversalResponse(error: "ERROR");
     } catch (error) {
-      print("ERRROR$error");
       return UniversalResponse(error: error.toString());
     }
   }
@@ -123,7 +120,6 @@ class ApiProvider {
       }
       return UniversalResponse(error: "ERROR");
     } catch (error) {
-      print("ERRROR$error");
       return UniversalResponse(error: error.toString());
     }
   }
@@ -144,7 +140,6 @@ class ApiProvider {
       }
       return UniversalResponse(error: "ERROR");
     } catch (error) {
-      print("ERRROR$error");
       return UniversalResponse(error: error.toString());
     }
   }
@@ -164,30 +159,51 @@ class ApiProvider {
       }
       return UniversalResponse(error: "ERROR");
     } catch (error) {
-      print("ERRROR$error");
       return UniversalResponse(error: error.toString());
     }
   }
 
-  Future<UniversalResponse> getCategoryProducts({required String categoryName}) async {
-    Uri uri = Uri.parse("https://fakestoreapi.com/products/category/$categoryName");
+  Future<UniversalResponse> getCategoryProducts(
+      {required String categoryName}) async {
+    Uri url = Uri.parse(
+      categoryName.isNotEmpty
+          ? 'https://fakestoreapi.com/products/category/$categoryName'
+          : "https://fakestoreapi.com/products",
+    );
     try {
-      http.Response response = await http.get(uri);
-
+      final response = await http.get(url);
       if (response.statusCode == 200) {
         return UniversalResponse(
-          data: (jsonDecode(response.body) as List?)
-              ?.map((e) => ProductModel.fromJson(e))
-              .toList() ??
-              [],
-        );
+            data: (jsonDecode(response.body) as List?)
+                ?.map((e) => ProductModel.fromJson(e))
+                .toList() ??
+                []);
       }
-      return UniversalResponse(error: "ERROR");
-    } catch (error) {
-      print("ERRROR$error");
-      return UniversalResponse(error: error.toString());
+      return UniversalResponse(error: 'Error: Status code not equal to 200');
+    } catch (e) {
+      print(e);
+      return UniversalResponse(error: e.toString());
     }
   }
+
+  // Future<UniversalResponse> getCategoryProducts({required String categoryName}) async {
+  //   Uri uri = Uri.parse("https://fakestoreapi.com/products/category/$categoryName");
+  //   try {
+  //     http.Response response = await http.get(uri);
+  //
+  //     if (response.statusCode == 200) {
+  //       return UniversalResponse(
+  //         data: (jsonDecode(response.body) as List?)
+  //             ?.map((e) => ProductModel.fromJson(e))
+  //             .toList() ??
+  //             [],
+  //       );
+  //     }
+  //     return UniversalResponse(error: "ERROR");
+  //   } catch (error) {
+  //     return UniversalResponse(error: error.toString());
+  //   }
+  // }
 
   Future<UniversalResponse> getAllUsers() async {
     Uri uri = Uri.parse("https://fakestoreapi.com/users");
@@ -204,7 +220,6 @@ class ApiProvider {
       }
       return UniversalResponse(error: "ERROR");
     } catch (error) {
-      print("ERRROR$error");
       return UniversalResponse(error: error.toString());
     }
   }

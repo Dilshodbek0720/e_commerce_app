@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 import '../../../utils/colors.dart';
 
-class LikesScreen extends StatefulWidget {
-  const LikesScreen({super.key});
+class BagScreen extends StatefulWidget {
+  const BagScreen({super.key});
 
   @override
-  State<LikesScreen> createState() => _LikesScreenState();
+  State<BagScreen> createState() => _BagScreenState();
 }
 
-class _LikesScreenState extends State<LikesScreen> {
+class _BagScreenState extends State<BagScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +17,7 @@ class _LikesScreenState extends State<LikesScreen> {
         toolbarHeight: 60,
         centerTitle: true,
         title: const Text(
-          "Likes",
+          "Bag",
           style: TextStyle(
               fontWeight: FontWeight.w500,
               fontSize: 32,

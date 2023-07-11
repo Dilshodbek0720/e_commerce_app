@@ -1,38 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:n8_default_project/data/network/api_repository.dart';
-import 'package:n8_default_project/ui/tab_box/basket/basket_screen.dart';
-import 'package:n8_default_project/ui/tab_box/contact/contact_screen.dart';
+import 'package:n8_default_project/data/repositories/category_repository.dart';
+import 'package:n8_default_project/data/repositories/product_repository.dart';
+import 'package:n8_default_project/data/repositories/user_repository.dart';
 import 'package:n8_default_project/ui/tab_box/home/home_screen.dart';
 import 'package:n8_default_project/ui/tab_box/like/like_screen.dart';
+import 'package:n8_default_project/ui/tab_box/user/user_screen.dart';
 import 'package:n8_default_project/utils/icons.dart';
 
 import '../../data/network/api_provider.dart';
+import 'bag/bag_screen.dart';
 
 class TabBox extends StatefulWidget {
-  const TabBox({Key? key}) : super(key: key);
-
+  const TabBox({Key? key, required this.apiProvider}) : super(key: key);
+  final ApiProvider apiProvider;
   @override
   State<TabBox> createState() => _TabBoxState();
 }
 
 class _TabBoxState extends State<TabBox> {
   int currentIndex = 0;
-
-  final CommercialRepository commercialRepository = CommercialRepository(apiProvider: ApiProvider());
-
+  late ProductRepository productRepository;
+  late UserRepository userRepository;
+  late CategoryRepository categoryRepository;
 
   List<Widget> screens = [];
 
   @override
   void initState() {
-
-    screens = [
-      HomeScreen(),
-      BasketScreen(),
-      LikesScreen(),
-      ContactScreen(),
-    ];
+    productRepository = ProductRepository(apiProvider: widget.apiProvider);
+    categoryRepository = CategoryRepository(apiProvider: widget.apiProvider);
+    userRepository = UserRepository(apiProvider: widget.apiProvider);
+    screens.add(HomeScreen(productRepository: productRepository,categoryRepository: categoryRepository),);
+    screens.add(BagScreen());
+    screens.add(LikesScreen());
+    screens.add(UserScreen(userRepository: userRepository));
 
     super.initState();
   }
@@ -42,11 +44,10 @@ class _TabBoxState extends State<TabBox> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
-      body:screens[currentIndex],
-      // IndexedStack(
-      //   index: currentIndex,
-      //   children: screens,
-      // ),
+      body:IndexedStack(
+        index: currentIndex,
+        children: screens,
+      ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.white,
@@ -56,7 +57,6 @@ class _TabBoxState extends State<TabBox> {
           setState(() {
             currentIndex = index;
           });
-
           switch(currentIndex){
             case 0:{}
             break;

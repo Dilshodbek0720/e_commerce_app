@@ -20,8 +20,6 @@ class ProductModel {
   });
 
   factory ProductModel.fromJson(Map<String, dynamic> json) {
-    // print(json['id'].runtimeType);
-    print(json['price'].runtimeType);
     return ProductModel(
       id: json["id"] as int? ?? 0,
       title: json["title"] as String? ?? "",
