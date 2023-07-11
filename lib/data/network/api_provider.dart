@@ -224,6 +224,8 @@ class ApiProvider {
     }
   }
 
+
+
   Future<UniversalResponse> loginUser({required String username, required String password}) async{
     Uri uri = Uri.parse("https://fakestoreapi.com/auth/login");
     try{
