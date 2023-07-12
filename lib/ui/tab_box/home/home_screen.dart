@@ -1,8 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:n8_default_project/data/network/api_provider.dart';
-import 'package:n8_default_project/data/network/api_repository.dart';
 import 'package:n8_default_project/data/repositories/category_repository.dart';
 import 'package:n8_default_project/data/repositories/product_repository.dart';
 import 'package:n8_default_project/models/products/product_model.dart';
@@ -10,7 +8,6 @@ import 'package:n8_default_project/ui/tab_box/home/sub_screen/product_add_screen
 import 'package:n8_default_project/ui/tab_box/home/widgets/category_selector.dart';
 import 'package:n8_default_project/ui/tab_box/home/sub_screen/show_product.dart';
 import 'package:n8_default_project/utils/colors.dart';
-import 'package:n8_default_project/utils/utility_functions.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class HomeScreen extends StatefulWidget {
