@@ -30,20 +30,20 @@ class ProductRepository{
     throw Exception();
   }
 
-  Future<ProductModel> newAddProduct({required ProductModel addProduct}) async{
+  Future<ProductModel?> newAddProduct({required ProductModel addProduct}) async{
     UniversalResponse universalResponse = await apiProvider.newAddProduct(addProduct: addProduct);
     if(universalResponse.error.isEmpty){
       return universalResponse.data as ProductModel;
     }
-    throw Exception();
+    return null;
   }
 
-  Future<ProductModel> addProductUpdate({required int updateId, required ProductModel updateModel}) async{
+  Future<ProductModel?> addProductUpdate({required int updateId, required ProductModel updateModel}) async{
     UniversalResponse universalResponse = await apiProvider.addProductUpdate(updateId: updateId, updateModel: updateModel);
     if(universalResponse.error.isEmpty){
       return universalResponse.data as ProductModel;
     }
-    throw Exception();
+    return null;
   }
 
   Future<ProductModel> delateProduct({required int deleteId}) async{

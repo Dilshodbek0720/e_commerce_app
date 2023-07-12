@@ -64,13 +64,7 @@ class ApiProvider {
   Future<UniversalResponse> newAddProduct({required ProductModel addProduct}) async{
     Uri uri = Uri.parse("https://fakestoreapi.com/products");
     try{
-      http.Response response = await http.post(uri, body: {
-        "title": addProduct.title,
-        "price": addProduct.price,
-        "description": addProduct.description,
-        "image": addProduct.image,
-        "category": addProduct.category
-      });
+      http.Response response = await http.post(uri, body: jsonEncode(addProduct.toJson()));
       if(response.statusCode == 200){
         return UniversalResponse(
           data: ProductModel.fromJson(jsonDecode(response.body))

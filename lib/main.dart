@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: LoginScreen(apiProvider: ApiProvider(),),
+      home: StorageRepository.getString("token").length>0 ? TabBox(apiProvider: ApiProvider()) : LoginScreen(apiProvider: ApiProvider(),),
     );
   }
 }

@@ -6,6 +6,7 @@ import 'package:n8_default_project/data/repositories/user_repository.dart';
 import 'package:n8_default_project/ui/tab_box/home/home_screen.dart';
 import 'package:n8_default_project/ui/tab_box/like/like_screen.dart';
 import 'package:n8_default_project/ui/tab_box/user/user_screen.dart';
+import 'package:n8_default_project/utils/colors.dart';
 import 'package:n8_default_project/utils/icons.dart';
 
 import '../../data/network/api_provider.dart';
@@ -50,7 +51,7 @@ class _TabBoxState extends State<TabBox> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.C_FFF4A2.withOpacity(0.9),
         iconSize: 24,
         onTap:
             (index) {

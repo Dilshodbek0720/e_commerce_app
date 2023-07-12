@@ -10,4 +10,5 @@ class AppImages{
   static const String likePassiveIcon  = "assets/svg/like_passive_icon.svg";
   static const String arrowLeft  = "assets/svg/arrow_left.svg";
   static const String bagButtonIcon  = "assets/svg/bag_button_icon.svg";
+  static const String settingsIcon  = "assets/svg/settings.svg";
 }

@@ -16,6 +16,7 @@ class _LikesScreenState extends State<LikesScreen> {
       appBar: AppBar(
         toolbarHeight: 60,
         centerTitle: true,
+        backgroundColor: AppColors.C_FFF4A2,
         title: const Text(
           "Likes",
           style: TextStyle(

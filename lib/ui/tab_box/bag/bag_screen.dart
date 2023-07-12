@@ -16,6 +16,7 @@ class _BagScreenState extends State<BagScreen> {
       appBar: AppBar(
         toolbarHeight: 60,
         centerTitle: true,
+        backgroundColor: AppColors.C_FFF4A2,
         title: const Text(
           "Bag",
           style: TextStyle(

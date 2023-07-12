@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:n8_default_project/data/repositories/product_repository.dart';
 import 'package:n8_default_project/models/products/product_model.dart';
+import 'package:n8_default_project/ui/tab_box/home/sub_screen/update_screen.dart';
 import 'package:n8_default_project/utils/colors.dart';
 import 'package:n8_default_project/utils/icons.dart';
 
 class ShowProduct extends StatefulWidget {
-  const ShowProduct({super.key, required this.productModel});
+  const ShowProduct({super.key, required this.productModel, required this.productRepository});
   final ProductModel productModel;
+  final ProductRepository productRepository;
   @override
   State<ShowProduct> createState() => _ShowProductState();
 }
@@ -38,6 +41,26 @@ class _ShowProductState extends State<ShowProduct> {
           ),
         ),
         actions: [
+          GestureDetector(
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context){
+                return ProductUpdateScreen(productRepository: widget.productRepository, productModel: widget.productModel);
+              }));
+            },
+            child: Container(
+              height: 36,
+              width: 36,
+              decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.7),
+                  shape: BoxShape.circle
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(6.0),
+                child: SvgPicture.asset(AppImages.settingsIcon),
+              ),
+            ),
+          ),
+          SizedBox(width: 10,),
           GestureDetector(
             child: Container(
               height: 36,
@@ -114,7 +137,8 @@ class _ShowProductState extends State<ShowProduct> {
                   SvgPicture.asset(AppImages.bagButtonIcon,)
                 ],
               ),
-            ))
+            )),
+            SizedBox(height: 35,)
           ],
         ),
       ),

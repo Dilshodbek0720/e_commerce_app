@@ -33,13 +33,11 @@ class ProductModel {
 
   Map<String, dynamic> toJson(){
     return {
-      "id":id,
       "title":title,
       "price":price,
       "description":description,
       "category":category,
-      "image":image,
-      "rating":ratingModel.toJson()
+      "image":image
     };
   }
 }

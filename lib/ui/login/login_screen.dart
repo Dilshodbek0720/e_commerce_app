@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:n8_default_project/data/network/api_provider.dart';
-import 'package:n8_default_project/data/repositories/user_repository.dart';
+import 'package:n8_default_project/data/repositories/login_repository.dart';
 import 'package:n8_default_project/ui/tab_box/tab_box.dart';
 
 import '../../utils/colors.dart';
@@ -17,10 +17,10 @@ class _LoginScreenState extends State<LoginScreen> {
   TextEditingController _controller1 = TextEditingController();
   TextEditingController _controller2 = TextEditingController();
 
-  late UserRepository userRepository;
+  late LoginRepository loginRepository;
   @override
   void initState() {
-    userRepository = UserRepository(apiProvider: widget.apiProvider);
+    loginRepository = LoginRepository(apiProvider: widget.apiProvider);
     super.initState();
   }
   @override
@@ -73,8 +73,15 @@ class _LoginScreenState extends State<LoginScreen> {
                       borderRadius: BorderRadius.circular(16))),
             ),
             SizedBox(height: 40,),
-            ElevatedButton(onPressed: (){
-
+            ElevatedButton(onPressed: () async{
+              if(await loginRepository.loginUser(username: _controller1.text, password: _controller2.text)){
+                Navigator.push(context, MaterialPageRoute(builder: (context){
+                  return TabBox(apiProvider: widget.apiProvider);
+                }));
+              }else {
+                ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text("Parol yoki username xato")));
+              }
             }, child: SizedBox(
               height: 50,
               child: Row(
