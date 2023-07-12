@@ -22,10 +22,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String activeCategoryName = "";
   List<ProductModel> products = [];
   List<String> categories = [];
-
+  
+  String activeCategoryName = "";
   int selectedMenu = 1;
   bool isLoading = false;
 
