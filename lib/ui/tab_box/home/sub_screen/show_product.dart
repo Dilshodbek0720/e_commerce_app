@@ -3,7 +3,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:n8_default_project/data/repositories/product_repository.dart';
 import 'package:n8_default_project/models/products/product_model.dart';
 import 'package:n8_default_project/ui/tab_box/home/sub_screen/update_screen.dart';
-import 'package:n8_default_project/utils/colors.dart';
 import 'package:n8_default_project/utils/icons.dart';
 
 class ShowProduct extends StatefulWidget {
