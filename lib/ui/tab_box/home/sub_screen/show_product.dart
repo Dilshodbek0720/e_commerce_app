@@ -18,15 +18,15 @@ class _ShowProductState extends State<ShowProduct> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Color(0xFFFFF4A2),
+      backgroundColor: const Color(0xFFFFF4A2),
       appBar: AppBar(
-        backgroundColor: Color(0xFFFFF4A2),
+        backgroundColor: const Color(0xFFFFF4A2),
         leading: GestureDetector(
           onTap: (){
             Navigator.pop(context);
           },
           child: Container(
-            margin: EdgeInsets.all(10),
+            margin: const EdgeInsets.all(10),
             height: 36,
             width: 36,
             decoration: BoxDecoration(
@@ -59,7 +59,7 @@ class _ShowProductState extends State<ShowProduct> {
               ),
             ),
           ),
-          SizedBox(width: 10,),
+          const SizedBox(width: 10,),
           GestureDetector(
             child: Container(
               height: 36,
@@ -74,7 +74,7 @@ class _ShowProductState extends State<ShowProduct> {
               ),
             ),
           ),
-          SizedBox(width: 10,)
+          const SizedBox(width: 10,)
         ],
       ),
       body: Padding(
@@ -82,7 +82,7 @@ class _ShowProductState extends State<ShowProduct> {
         child: ListView(
           children: [
             Container(
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               height: height*0.4,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(26),
@@ -91,53 +91,53 @@ class _ShowProductState extends State<ShowProduct> {
               width: double.infinity,
               child: Image.network(widget.productModel.image),
             ),
-            SizedBox(height: 15,),
+            const SizedBox(height: 15,),
             Row(
               children: [
-                SizedBox(width: 30,),
-                Text("\$${widget.productModel.price}", style: TextStyle(
+                const SizedBox(width: 30,),
+                Text("\$${widget.productModel.price}", style: const TextStyle(
                   fontSize: 30,
                   color: Colors.black,
                 ),),
               ],
             ),
-            SizedBox(height: 6,),
+            const SizedBox(height: 6,),
             Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text("\$${widget.productModel.title}",
               maxLines: 4,
-              style: TextStyle(
+              style: const TextStyle(
               fontSize: 20,
               color: Colors.black,
             ),),
             ),
-            SizedBox(height: 6,),
+            const SizedBox(height: 6,),
             Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Text("\$${widget.productModel.description}",
               maxLines: 7,
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(
+              style: const TextStyle(
               fontSize: 13,
               color: Colors.black,
             ),),
             ),
-            SizedBox(height: 30,),
+            const SizedBox(height: 30,),
             ElevatedButton(onPressed: (){}, child: SizedBox(
               height: 50,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Add to bag", style: TextStyle(
+                  const Text("Add to bag", style: TextStyle(
                     fontSize: 20,
                     color: Colors.black
                   ),),
-                  SizedBox(width:10,),
+                  const SizedBox(width:10,),
                   SvgPicture.asset(AppImages.bagButtonIcon,)
                 ],
               ),
             )),
-            SizedBox(height: 35,)
+            const SizedBox(height: 35,)
           ],
         ),
       ),
